@@ -36,17 +36,19 @@ Home.getInitialProps = async function() {
   const genre = '';
   const keywords = '';
 
-  const data = await fetch(
-    `${baseUrl}/movies/${page}?sort=${sort}&order=${order}&genre=${genre}&keywords=${keywords}`
-  ).then(function(res) {
-    console.log(res.status);
+  const data = [];
 
-    if (res.status === 200) {
-      return res.json();
-    }
+  // const data = await fetch(
+  //   `${baseUrl}/movies/${page}?sort=${sort}&order=${order}&genre=${genre}&keywords=${keywords}`
+  // ).then(function(res) {
+  //   console.log(res.status);
 
-    return [];
-  });
+  //   if (res.status === 200) {
+  //     return res.json();
+  //   }
+
+  //   return [];
+  // });
 
   return {
     movies: data,
