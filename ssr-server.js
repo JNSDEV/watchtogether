@@ -4,6 +4,7 @@ const next = require('next');
 const WebTorrent = require('webtorrent');
 const parseTorrent = require('parse-torrent');
 
+const port = 80;
 let currentVideoTime = Date.now();
 
 const client = new WebTorrent();
@@ -185,9 +186,9 @@ app
     });
 
     server.get('*', (req, res) => handle(req, res));
-    server.listen(3000, err => {
+    server.listen(port, err => {
       if (err) throw err;
-      console.log('> Ready on http://localhost:3000');
+      console.log(`> Ready on http://localhost:${port}`);
     });
   })
   .catch(ex => {

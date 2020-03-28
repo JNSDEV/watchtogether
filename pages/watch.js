@@ -27,6 +27,7 @@ class Watch extends Component {
       socket: null,
       stream: encodeURIComponent(this.props.stream),
     };
+    this.getProgress = this.getProgress.bind(this);
   }
 
   async componentDidMount() {
@@ -125,11 +126,11 @@ class Watch extends Component {
 
             setInterval(function() {
               _this.state.socket.emit('timesync', 'test');
-            }, 1000);
+            }, 5000);
           }
           setTimeout(function() {
             _this.getProgress(stream);
-          }, 5000);
+          }, 10000);
         });
     }
   };
