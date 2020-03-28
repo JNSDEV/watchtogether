@@ -4,7 +4,7 @@ const next = require('next');
 const WebTorrent = require('webtorrent');
 const parseTorrent = require('parse-torrent');
 
-const port = 80;
+const port = 8080;
 let currentVideoTime = Date.now();
 
 const client = new WebTorrent();
@@ -24,21 +24,21 @@ let error_message = '';
 const dev = false;
 const app = next({ dev });
 const handle = app.getRequestHandler();
-// const http = require('http').createServer(app);
-// const io = require('socket.io')(http);
+const http = require('http').createServer(app);
+const io = require('socket.io')(http);
 
-// io.set('origins', '*:*');
-// io.listen(3001);
+io.set('origins', '*:*');
+io.listen(3001);
 
-// io.on('connection', function(socket) {
-//   socket.on('timesync', function(data) {
-//     console.log('message', data);
-//     socket.emit('timesync', {
-//       id: data,
-//       result: Date.now(),
-//     });
-//   });
-// });
+io.on('connection', function(socket) {
+  socket.on('timesync', function(data) {
+    console.log('message', data);
+    socket.emit('timesync', {
+      id: data,
+      result: Date.now(),
+    });
+  });
+});
 
 client.on('error', function(err) {
   error_message = err.message;
