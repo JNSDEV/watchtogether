@@ -3,13 +3,34 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev",
+    "dev": "node ssr-server.js",
     "build": "next build",
-    "start": "next start"
+    "start": "node ssr-server.js",
+    "export": "next export"
   },
   "dependencies": {
+    "@fortawesome/fontawesome-free": "^5.12.1",
+    "@fortawesome/fontawesome-svg-core": "^1.2.27",
+    "@fortawesome/free-regular-svg-icons": "^5.12.1",
+    "@fortawesome/free-solid-svg-icons": "^5.12.1",
+    "@fortawesome/react-fontawesome": "^0.1.9",
+    "@zeit/next-sass": "^1.0.1",
+    "express": "^4.17.1",
+    "isomorphic-unfetch": "^3.0.0",
+    "materialize-css": "^1.0.0-rc.2",
     "next": "9.3.1",
+    "node-sass": "^4.13.1",
+    "parse-torrent": "^7.0.1",
+    "rc-progress": "^2.5.2",
     "react": "16.13.1",
-    "react-dom": "16.13.1"
+    "react-dom": "16.13.1",
+    "react-materialize": "^3.5.9",
+    "socket.io": "^2.3.0",
+    "socket.io-client": "^2.3.0",
+    "timesync": "^1.0.5",
+    "torrent-stream": "^1.2.0",
+    "websocket": "^1.0.31",
+    "webtorrent": "^0.107.17",
+    "ws": "^7.2.3"
   }
 }

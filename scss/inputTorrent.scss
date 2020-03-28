@@ -1,0 +1,7 @@
+.input-torrent-container {
+  display: flex;
+  //   padding: 15px;
+  & > * {
+    margin: 15px;
+  }
+}

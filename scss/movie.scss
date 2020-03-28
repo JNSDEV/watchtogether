@@ -1,0 +1,72 @@
+.movie-container {
+  padding-top: 15px;
+  padding-bottom: 15px;
+  & > * {
+    font-size: 14px !important;
+  }
+
+  .image-container {
+    overflow: hidden;
+    position: relative;
+    height: 100%;
+
+    .detailed {
+      transition: opacity 0.4s ease-out;
+      opacity: 0;
+      left: 0;
+      display: flex;
+      right: 0;
+      margin-left: auto;
+      position: absolute;
+      height: 100%;
+      z-index: 99;
+      width: 100px;
+      flex-direction: column;
+      justify-content: center;
+      margin-right: auto;
+      align-items: center;
+      p {
+        margin-top: 15px;
+        margin-bottom: 15px;
+      }
+      svg {
+        color: #ffffff;
+        transition: color 0.2s ease-out;
+      }
+    }
+
+    &:hover {
+      .detailed {
+        opacity: 1;
+        &:hover {
+          svg {
+            color: #171721;
+          }
+        }
+      }
+      img {
+        $blur: 4px;
+        transform: scale(1.1);
+        filter: blur($blur);
+        -webkit-filter: blur($blur);
+      }
+    }
+
+    img {
+      max-width: 100%;
+      position: absolute;
+      top: -9999px;
+      bottom: -9999px;
+      left: -9999px;
+      right: -9999px;
+      margin: auto;
+      min-height: 100%;
+      transition: filter transform 0.4s ease-out;
+    }
+  }
+
+  .movie-sub {
+    margin-top: 15px;
+    margin-bottom: 15px;
+  }
+}
