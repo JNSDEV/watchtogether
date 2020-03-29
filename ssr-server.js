@@ -19,9 +19,9 @@ let stats = {
 
 let error_message = '';
 
-// const dev = process.env.NODE_ENV !== 'production';
+const dev = process.env.NODE_ENV !== 'production';
 
-const dev = false;
+// const dev = false;
 const app = next({ dev });
 const handle = app.getRequestHandler();
 const http = require('http').createServer(app);

@@ -10,7 +10,8 @@ const Movie = props => {
   const { movie } = props;
   const { title, images, year, rating, torrents } = movie;
 
-  const torrent = torrents.en['720p'].url;
+  const torrent =
+    typeof torrents.en['720p'] !== 'undefined' ? torrents.en['720p'].url : '';
 
   return (
     <div className={`${c} movie-container`}>

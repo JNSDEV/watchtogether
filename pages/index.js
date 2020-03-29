@@ -4,6 +4,38 @@ import List from '../components/List';
 import '../scss/main.scss';
 import InputTorrent from '../components/InputTorrent';
 
+const requestVideos = async (genre = '', keywords = '') => {
+  const baseUrl = 'https://tv-v2.api-fetch.website';
+  const page = 1;
+  const sort = 'trending';
+  const order = '-1';
+
+  const data = await fetch(
+    `${baseUrl}/movies/${page}?sort=${sort}&order=${order}&genre=${genre}&keywords=${keywords}`
+  ).then(function(res) {
+    console.log(res.status);
+
+    if (res.status === 200) {
+      return res.json();
+    }
+
+    return [];
+  });
+  return data;
+};
+
+const genreChanged = () => {
+  const genre = document.getElementById('genre').value;
+  const search = document.getElementById('search').value;
+  requestVideos(genre, search);
+};
+
+const searchChanged = () => {
+  const genre = document.getElementById('genre').value;
+  const search = document.getElementById('search').value;
+  requestVideos(genre, search);
+};
+
 const Home = props => {
   // eslint-disable-next-line react/prop-types
   const { movies } = props;
@@ -18,8 +50,22 @@ const Home = props => {
 
       <div className="picks" />
 
-      <div className="own">
-        <InputTorrent />
+      <div className="row">
+        <div className="filters">
+          <select id="genre" onChange={genreChanged}>
+            <option selected>comedy</option>
+            <option>action</option>
+          </select>
+          <input
+            type="text"
+            id="search"
+            placeholder="search"
+            onChange={searchChanged}
+          />
+        </div>
+        <div className="own">
+          <InputTorrent />
+        </div>
       </div>
       <div className="list">
         <List title="movies" movies={movies} />
@@ -29,29 +75,8 @@ const Home = props => {
 };
 
 Home.getInitialProps = async function() {
-  const baseUrl = 'https://tv-v2.api-fetch.website';
-  const page = 1;
-  const sort = 'trending';
-  const order = 1;
-  const genre = '';
-  const keywords = '';
-
-  const data = [];
-
-  // const data = await fetch(
-  //   `${baseUrl}/movies/${page}?sort=${sort}&order=${order}&genre=${genre}&keywords=${keywords}`
-  // ).then(function(res) {
-  //   console.log(res.status);
-
-  //   if (res.status === 200) {
-  //     return res.json();
-  //   }
-
-  //   return [];
-  // });
-
   return {
-    movies: data,
+    movies: requestVideos(),
   };
 };
 

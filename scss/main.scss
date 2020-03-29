@@ -11,3 +11,17 @@ body {
   background-color: #171721;
   color: #ffffff;
 }
+
+.row {
+  padding: 0 15px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.filters {
+  display: flex;
+  justify-content: flex-end;
+  & > * {
+    margin: 15px;
+  }
+}
