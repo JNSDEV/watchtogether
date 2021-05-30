@@ -30,6 +30,6 @@
     "torrent-stream": "^1.2.0",
     "websocket": "^1.0.31",
     "webtorrent": "^0.107.17",
-    "ws": "^7.2.3"
+    "ws": "^7.4.6"
   }
 }
